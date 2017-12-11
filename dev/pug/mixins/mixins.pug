@@ -1,0 +1,134 @@
+
+
+mixin table(w,h)
+	
+	if w
+		- attributes.width = w
+	//- else
+	//- 	- attributes.width = '100%'
+
+	if h
+		- attributes.height = h
+	//- else
+	//- 	- attributes.height = '100%'
+
+	table(cellpadding="0" cellspacing="0" border="0")&attributes(attributes)
+		if block
+			block
+
+mixin td(w,h)
+
+	if w
+		- attributes.width = w
+	//- else
+	//- 	- attributes.width = '100%'
+
+	if h
+		- attributes.height = h
+	//- else
+	//- 	- attributes.height = '100%'
+
+	td(valign="top")&attributes(attributes)
+		if block
+			block
+
+
+mixin p(fontSize, fontFamily, fontColor, lineHeight)
+
+	- var style = {margin: 0,padding: 0, 'line-height': 1}
+
+	if fontColor
+		- style.color = fontColor + ' !important' + ';color:' + fontColor
+
+	if fontSize
+		- style['font-size'] = fontSize + 'px'+ ' !important' + ';font-size:' + fontSize + 'px'
+	
+	if fontFamily
+		- style['font-family'] = fontFamily
+
+	if lineHeight
+		- style['line-height'] = lineHeight
+
+	p(style= style)&attributes(attributes)
+		if block
+			block
+
+
+mixin span(fontSize, fontFamily, fontColor)
+
+	- var style = {}
+
+	if fontColor
+		- style.color = fontColor + '!important' + ';color:' + fontColor
+
+	if fontSize
+		- style['font-size'] = fontSize + 'px'+ ' !important' + ';font-size:' + fontSize + 'px'
+	
+	if fontFamily
+		- style['font-family'] = fontFamily
+
+	span(style= style)&attributes(attributes)
+		if block
+			block
+
+mixin a(href, fontSize, fontFamily, fontColor)
+
+	- var style = {'text-decoration': 'none',outline:0}
+
+	if fontColor
+		- style.color = fontColor + ' !important' + ';color:' + fontColor
+	else
+		- style.color = '#000000' + ' !important' + ';color:' + '#000000'
+
+	if fontSize
+		- style['font-size'] = fontSize + 'px' + ' !important' + ';font-size:' + fontSize + 'px'
+	
+	if fontFamily
+		- style['font-family'] = fontFamily
+
+	a(href= href style= style target="_blank")&attributes(attributes)
+		if block
+			block
+
+mixin img(src)
+	img(src= src style={display:'block',outline:0, border:0})&attributes(attributes)
+
+
+mixin btn(w,h,lineheight,href,fontSize,fontFamily,fontColor,background)
+	
+	- var style = {display:'block','line-height': lineheight, 'text-decoration': 'none',outline:0}
+	
+
+	if w
+		- attributes.width = w
+	if h
+		- attributes.height = h
+
+	if fontSize
+		- style['font-size'] = fontSize + 'px' + ' !important' + ';font-size:' + fontSize + 'px'
+
+	if fontFamily
+		- style['font-family'] = fontFamily
+	else
+		- style['font-family'] = 'Arial'
+
+	if fontColor
+		- style.color = fontColor + ' !important' + ';color: ' + fontColor
+	else
+		- style.color = '#000000' + ' !important' + ';color: ' + '#000000'
+
+	if background
+		- attributes['bgcolor'] = background
+
+
+
+	table(cellpadding="0" cellspacing="0" border="0" style={'background': background})&attributes(attributes)
+		tr
+			td(valign="middle" align="center")(style={color:style.color, 'font-family': fontFamily})&attributes(attributes)
+				a(href= href style= style target="_blank")
+					table(cellpadding="0" cellspacing="0" border="0" width= w height= h)
+						tr
+							td(style={color:style.color, 'font-family': fontFamily} valign="middle" align="center" width= w height= h)
+								a(href= href style= style target="_blank")
+									if block
+										block

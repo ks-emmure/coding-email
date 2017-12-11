@@ -1,0 +1,27 @@
+{
+  "name": "coding-email",
+  "version": "0.0.1",
+  "description": "workflow for coding email markup",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "express": "*",
+    "glob": "*",
+    "run-sequence": "*",
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-util": "*",
+    "gulp-pug": "*",
+    "gulp-changed": "*",
+    "gulp-rename": "*"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "keywords": [
+    "email",
+    "gulp",
+    "html",
+    "pug"
+  ],
+  "author": "ks.emmure",
+  "license": "ISC"
+}
